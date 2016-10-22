@@ -1,42 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
+<!-- saved from url=(0053)file:///C:/Users/Deniza/Codestuff/harvambe/index.html -->
+<html lang="en" class="sk-widget-opened"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>harvambe</title>
 
     <!-- Bootstrap links -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./index_files/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./index_files/style.css">
 	
 	<!--Trying out-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans+Caption|Taviraj|Ubuntu" rel="stylesheet">
+	<link href="./index_files/css" rel="stylesheet">
 	
 	
-	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Lekton' rel='stylesheet' type='text/css'>
-  </head>
+	<link href="./index_files/css(1)" rel="stylesheet" type="text/css">
+	<link href="./index_files/css(2)" rel="stylesheet" type="text/css">
+
+	<!-- Converse.js -->
+	<link rel="stylesheet" type="text/css" media="screen" href="./index_files/converse.min.css">
+	<script src="./index_files/converse.min.js.download"></script>
+		
+	</head>
 
   <!--====================================BODY===STARTS=========================================-->
   <body>
-	
-	<script src="https://cdn.smooch.io/smooch.min.js"></script>
-	
-		<script>
-			Smooch.init({ appToken: '03i1fuzecdxgqebmn2hqui2zr' });
-		</script>
+  
+	<div class="col-sm-4 col-sm-offset-8" id="chat" style="background-color:#e2e2e2;height:100vh">
+	</div>
 	
 
 	
 		<!-- jQuery files -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="./index_files/jquery.min.js.download"></script>
 		<!-- Compiled plugins (js files) -->
-		<script src="js/bootstrap.min.js"></script>
-		<script src=js/bootstrap.js></script>
+		<script src="./index_files/bootstrap.min.js.download"></script>
+		<script src="./index_files/bootstrap.js.download"></script>
 		
+
 	
-	</body>
+	<script>
+		require(['converse'], function (converse) {
+		converse.initialize({
+        bosh_service_url: 'https://bind.conversejs.org', // Please use this connection manager only for testing purposes
+        i18n: locales.en, // Refer to ./locale/locales.js to see which locales are supported
+        show_controlbox_by_default: true,
+        roster_groups: true
+		});
+		});
+	</script>
 	
 	<!--=======================================BODY==ENDS==========================================-->
-</html>
+<div id="conversejs" style="display: block;"><a href="file:///C:/Users/Deniza/Codestuff/harvambe/index.html#" id="toggle-controlbox" class="toggle-controlbox" style="display: none;"><span class="conn-feedback">Toggle chat</span>
+<span style="display: none" id="online-count">(0)</span>
+</a><div id="controlbox" class="chatbox" style="width: 200px; display: block;"><div class="flyout box-flyout" style="height: 450px; width: 200px;">
+    <div class="dragresize dragresize-top"></div>
+    <div class="dragresize dragresize-topleft"></div>
+    <div class="dragresize dragresize-left"></div>
+    <div class="chat-head controlbox-head">
+        <ul id="controlbox-tabs"><li><a class="current" href="file:///C:/Users/Deniza/Codestuff/harvambe/index.html#login-dialog">Sign in</a></li>
+<li><a class="s" href="file:///C:/Users/Deniza/Codestuff/harvambe/index.html#register">Register</a></li>
+</ul>
+        
+            <a class="chatbox-btn close-chatbox-button icon-close"></a>
+        
+    </div>
+    <div class="controlbox-panes"><div id="login-dialog" class="controlbox-pane"><form class="pure-form pure-form-stacked converse-form" id="converse-login" method="post">
+    
+    
+        
+            <label>XMPP Username:</label>
+            <input type="text" name="jid" placeholder="user@server">
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="password">
+            <input class="pure-button button-primary" type="submit" value="Log In">
+            <span class="conn-feedback"></span>
+        
+        
+        
+    
+</form>
+</div><div id="register" class="controlbox-pane" style="display: none;"><form id="converse-register" class="pure-form converse-form">
+    <span class="reg-feedback"></span>
+    <label>Your XMPP provider's domain name:</label>
+    <input type="text" name="domain" placeholder=" e.g. conversejs.org">
+    <p class="form-help">Tip: A list of public XMPP providers is available <a href="https://xmpp.net/directory.php" class="url" target="_blank" rel="noopener">here</a>.</p>
+    <input class="pure-button button-primary" type="submit" value="Fetch registration form">
+</form>
+</div></div>
+</div>
+</div><div id="minimized-chats">
+    <a id="toggle-minimized-chats" href="file:///C:/Users/Deniza/Codestuff/harvambe/index.html#"></a>
+    <div class="flyout minimized-chats-flyout"></div>
+</div>
+</div><div id="sk-holder"><div data-reactroot=""><div id="sk-container" class="sk-button-display sk-appear sk-animation"><!-- react-empty: 3 --><div id="sk-wrapper" class="sk-branding-color-light sk-accent-color-dark sk-link-color-dark"><div id="sk-header" class="sk-header-wrapper" style="background-color: rgb(226, 226, 226);"><!-- react-text: 6 -->Harvambe Kingdom<!-- /react-text --><div class="sk-close-handle sk-close-hidden"><i class="fa fa-times"></i></div></div><div class="sk-notification-container"></div><div></div><div id="sk-conversation"><div class="sk-intro-section"><svg class="app-icon" viewBox="0 0 80 80" style="shape-rendering: geometricPrecision;"><rect fill="#e2e2e2" x="31.3" y="39.5" width="4.4" height="4.4"></rect><rect fill="#e2e2e2" x="31.3" y="30.8" width="4.4" height="5.8"></rect><path fill="#e2e2e2" d="M48.7,52.6v-5.8h-4.4v33c3-0.3,5.9-1,8.7-2V52.6H48.7z"></path><path fill="#e2e2e2" d="M56,64.2v12.5c2-0.9,4-1.9,5.8-3.1v-9.3H56z"></path><path fill="#e2e2e2" d="M18.2,64.2v9.3c1.8,1.2,3.8,2.3,5.8,3.2V64.2H18.2z"></path><path fill="#e2e2e2" d="M38.5,46.8V80c0.5,0,1,0,1.5,0s1,0,1.5,0V46.8H38.5z"></path><path fill="#e2e2e2" d="M31.3,46.8v5.8h-4.4v25.2c2.8,1,5.8,1.7,8.7,2v-33L31.3,46.8L31.3,46.8z"></path><rect fill="#e2e2e2" x="44.4" y="30.8" width="4.4" height="5.8"></rect><rect fill="#e2e2e2" x="38.5" y="39.5" width="2.9" height="4.4"></rect><path fill="#e2e2e2" d="M80,40C80,17.9,62.1,0,40,0S0,17.9,0,40c0,12.3,5.6,23.9,15.3,31.4V59.7c0-0.7,0.6-1.3,1.3-1.3h0h4.5V51 c0-0.7,0.6-1.3,1.3-1.3h4.5V26.3c0-0.7,0.6-1.3,1.3-1.3h7.4V19c0-0.7,0.6-1.3,1.3-1.3c0,0,0,0,0.1,0h1.6V7.5C38.6,6.7,39.2,6,40,6 c0.8,0,1.5,0.7,1.5,1.5v10.2H43c0.7,0,1.3,0.6,1.4,1.3c0,0,0,0,0,0v6h7.4c0.7,0,1.3,0.6,1.3,1.3v0v23.4h4.8c0.7,0,1.3,0.6,1.3,1.3 v7.6h4.2c0.7,0,1.3,0.6,1.3,1.3v0v11.5C74.4,63.9,80,52.3,80,40z"></path><rect fill="#e2e2e2" x="38.5" y="30.8" width="2.9" height="5.8"></rect><rect fill="#e2e2e2" x="44.4" y="39.5" width="4.4" height="4.4"></rect><g><path fill="#55555d" d="M56,76.7V64.2h5.8v9.3c1-0.7,2-1.3,2.9-2.1V60c0-0.7-0.6-1.3-1.3-1.3h-4.2V51c0-0.7-0.6-1.3-1.3-1.3h-4.8V26.3 v0c0-0.7-0.6-1.3-1.3-1.3h-7.4v-6c0,0,0,0,0,0c0-0.7-0.6-1.3-1.4-1.3h-1.5V7.5c0-0.8-0.7-1.5-1.5-1.5s-1.5,0.7-1.5,1.5v10.2H37 c0,0,0,0-0.1,0c-0.7,0-1.3,0.6-1.3,1.3V25h-7.4c-0.7,0-1.3,0.6-1.3,1.3v23.4h-4.5c-0.7,0-1.3,0.6-1.3,1.3v7.4h-4.5 c-0.7,0-1.3,0.6-1.3,1.3v11.7c0.9,0.7,1.9,1.4,2.9,2.1v-9.3H24v12.4c1,0.4,1.9,0.8,2.9,1.1V52.6h4.4v-5.8h4.4v33 c1,0.1,1.9,0.2,2.9,0.2V46.8h2.9V80c1,0,1.9-0.1,2.9-0.2v-33h4.4v5.8h4.4v25.2 M35.6,43.9h-4.4v-4.4h4.4V43.9z M35.6,36.6h-4.4 v-5.8h4.4V36.6z M41.5,43.9h-2.9v-4.4h2.9V43.9z M41.5,36.6h-2.9v-5.8h2.9V36.6z M48.7,43.9h-4.4v-4.4h4.4V43.9z M48.7,36.6h-4.4 v-5.8h4.4V36.6z"></path><path fill="#55555d" d="M56.1,76.6C56.1,76.7,56,76.7,56.1,76.6L56.1,76.6C56,76.7,56.1,76.7,56.1,76.6z"></path><path fill="#55555d" d="M18.2,73.6C18.2,73.6,18.2,73.6,18.2,73.6L18.2,73.6C18.2,73.6,18.2,73.6,18.2,73.6z"></path></g></svg><div class="app-name">harambe</div><div class="intro-text">We're here to talk, so ask us anything!</div></div><div class="sk-messages-container" style="max-height: calc(100% - 100px);"><div class="sk-messages"><div class="sk-row sk-right-row"><!-- react-text: 33 --><!-- /react-text --><div class="sk-msg-wrapper"><div class="sk-msg sk-msg-appuser-first" style="border-left-color: rgb(0, 153, 255); background-color: rgb(0, 153, 255);"><span><span><span>hi good good</span><br></span></span></div></div><div class="sk-clear"></div></div><div class="sk-row sk-right-row"><!-- react-text: 42 --><!-- /react-text --><div class="sk-msg-wrapper"><div class="sk-msg sk-msg-appuser-last" style="border-left-color: rgb(0, 153, 255); background-color: rgb(0, 153, 255);"><span><span><span>fejfwhfjhg;ihlwageaw</span><br></span></span></div></div><div class="sk-clear"></div></div><div class="sk-row sk-left-row"><div class="sk-from">den</div><img class="sk-msg-avatar" src="./index_files/avatar"><div class="sk-msg-wrapper"><div class="sk-msg"><span><span><span>heroooo</span><br></span></span></div></div><div class="sk-clear"></div></div></div><div class="sk-logo"><a href="https://smooch.io/live-web-chat/?utm_source=widget" target="_blank"><span>Messaging by</span><!-- react-text: 63 --> <!-- /react-text --><img class="sk-image" src="./index_files/e0fcb9f29bbe719fa21691fe1262984c.png" srcset="https://cdn.smooch.io/e0fcb9f29bbe719fa21691fe1262984c.png 1x, https://cdn.smooch.io/5d489809c04861e435d327c7d546f210.png 2x" alt="smooch.io"></a></div></div></div><div id="sk-footer"><label class="btn btn-sk-link image-upload"><form><input type="file" accept="image/*"></form><i class="fa fa-camera"></i></label><form action="file:///C:/Users/Deniza/Codestuff/harvambe/index.html#"><div class="input-container"><input placeholder="Type a message..." class="input message-input" title="Send"></div></form><a class="send">Send</a></div></div></div><div id="sk-messenger-button" class="messenger-button-hidden" style="background-color: rgb(226, 226, 226);"><div class="messenger-button-icon"><img src="./index_files/web_button_icon.jpg"></div></div></div></div></body></html>
