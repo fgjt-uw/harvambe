@@ -17,12 +17,12 @@ function submitCommand(){
     if(command == "") return;
     http = initRequest();
     http.open("GET", "ItineraryServlet?action=submit&id=" + escape(command), true);
-    http.onreadystatechange = callback;
+    http.onreadystatechange = serverCallback;
     http.send(null);
     document.getElementById("comm_input").value = "";
 }
 
-function callback() {
+function serverCallback() {
     if (http.readyState == 4) {
         if (http.status == 200) {
             parseMessages(http.responseXML);
@@ -34,7 +34,16 @@ function parseMessages(responseXML){
     if(responseXML == null){
         return false;
     } else {
-        var tst = responseXML.getElementsByTagName("p")[0].firstChild.nodeValue;
+        var tst = responseXML.getElementsByTagName("p");
+        if(tst!=null){
+           tst = tst[0]; 
+            if(tst!=null){
+                tst = tst.firstChild;
+                if(tst!=null){
+                    tst = tst.nodeValue;
+                }
+            }
+        }
         alert(tst);
         return true;
     }

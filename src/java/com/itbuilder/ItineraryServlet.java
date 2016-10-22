@@ -64,10 +64,12 @@ public class ItineraryServlet extends HttpServlet {
                     }
                 }
                 if(it == null){
-                    out.println("<p>" + id + " nothing </p>");
+                    out.println("<p> null </p>");
                 } else {
                     out.println("<p>"+it.getJSONString()+"</p>");
                 }
+            } else {
+                out.println("<p> umm </p>");
             }
         } finally {
             out.close();
