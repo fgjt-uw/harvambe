@@ -1,6 +1,10 @@
 
 package com.itbuilder;
 
+import com.google.appengine.labs.repackaged.org.json.JSONException;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
+import java.util.ArrayList;
+
 /**
  *
  * @author alyacarina
@@ -11,16 +15,18 @@ package com.itbuilder;
 */
 class Itinerary {
     
-    private ItineraryNode start_point, current;
+    private ItineraryNode start_point, current_last;
+    private int num;
     
     Itinerary(double start_lat, double start_long){
         start_point = new ItineraryNode(start_lat, start_long);
-        current = start_point;
+        current_last = start_point;
+        num = 1;
     }
     
     void addNode(double latitude, double longitude){
-        current.next = new ItineraryNode(latitude, longitude);
-        current = current.next;
+        current_last.next = new ItineraryNode(latitude, longitude);
+        current_last = current_last.next;
     }
     
     // implemented for linked_list path
@@ -36,12 +42,31 @@ class Itinerary {
             i = i.next;
         }
         
-        if(i!=null){
+        if(i!=null && prev != i){
             prev.next = i.next; // toss out found node
+        } else if(prev == start_point && i==null) {
+            start_point = null;
         }
     }
     
-    String getJSON(){
-        return "test";
+    String getJSONString() {
+        try {
+            ItineraryNode it = start_point;
+            String s = "";
+            while(it != null){
+                JSONObject j = new JSONObject();
+                j.put("latitude", it.latitude);
+                j.put("longitude", it.longitude);
+                s+=j.toString()+"\n";
+                it = it.next;
+            }
+            return s;
+        } catch(JSONException jason){
+            return "";
+        }
+    }
+    
+    boolean isValid(){
+        return start_point != null;
     }
 }

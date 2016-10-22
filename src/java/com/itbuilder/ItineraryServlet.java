@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 public class ItineraryServlet extends HttpServlet {
 
     private ServletContext context;
+    private Itinerary it = null;
+    private double last_lat, last_long;
     
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -41,9 +43,31 @@ public class ItineraryServlet extends HttpServlet {
         response.setContentType("text/xml;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try { 
+            if(it!=null && !it.isValid()){
+                it = null;
+            }
+            
             if(action.equals("submit")){
-                out.println("<p>" + id + " " + (new Itinerary(0, 0)).getJSON() 
-                        + " " + (new Test()).getTestString() + "</p>");
+                if(id.equals("add")){
+                    if(it == null){
+                        it = new Itinerary(Math.random(), Math.random());
+                    } else {
+                        last_lat = Math.random();
+                        last_long = Math.random();
+                        it.addNode(last_lat, last_long);
+                    }
+                } else if(id.equals("remove")) {
+                    if(it == null){
+                        // do nothing
+                    } else {
+                        it.removeNode(last_lat, last_long);
+                    }
+                }
+                if(it == null){
+                    out.println("<p>" + id + " nothing </p>");
+                } else {
+                    out.println("<p>"+it.getJSONString()+"</p>");
+                }
             }
         } finally {
             out.close();

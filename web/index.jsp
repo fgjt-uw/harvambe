@@ -27,15 +27,13 @@
             #map_canvas { height: 100%; }
         </style> 
     </head>
-    <body onload="init()">
+    <body>
         <!-- embedded map -->
         <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDwT0mGyNuh1wwVQbi8EZlu5lWvpMXEYjQ&callback=initMap" 
                 async defer>
         </script>
         <div id="map" style="height:90%; width:100%"></div>
-        <!--<form name="command_form">-->
-            <input type="text" id="comm_input">
-            <input type="submit" value="submit" onClick="submitCommand()">
-        <!--</form>-->
+        <input type="text" rows="1" id="comm_input">
+        <input type="submit" id="xyz" onClick="submitCommand()">
     </body>
 </html>

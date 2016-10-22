@@ -19,4 +19,5 @@ class ItineraryNode {
     boolean hasNext(){
         return next != null;
     }
+    
 }
