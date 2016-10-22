@@ -10,8 +10,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Wandaless</title>
+        <script type="text/javascript" src="/config/private_keys"></script>
+        <!-- embedded map customizations -->
+        <script>
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 37.0902, lng: -95.7129},
+                zoom: 4
+            }
+        </script>
     </head>
     <body>
-        <h1>Under Construction.</h1>
+        <!-- embedded map -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=api_keys.google_maps"
+                async defer>
+        </script>
     </body>
 </html>
