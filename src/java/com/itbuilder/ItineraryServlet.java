@@ -34,10 +34,17 @@ public class ItineraryServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String action = request.getParameter("action");
+        String id = request.getParameter("id");
+        
         response.setContentType("text/xml;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-            out.println("<p>" + (new Test()).getTestString() + "</p>");
+        try { 
+            if(action.equals("submitCommand")){
+                out.println("<p>" + id + " " + (new Itinerary(0, 0)).getJSON() 
+                        + " " + (new Test()).getTestString() + "</p>");
+            }
         } finally {
             out.close();
         }

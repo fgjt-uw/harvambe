@@ -1,7 +1,6 @@
 var http;
 
 function init(){
-    test();
 }
 
 function initRequest() {
@@ -23,6 +22,14 @@ function test(){
     http.send(null);
 }
 
+function submitCommand(){
+    var command = document.getElementById(comm_input).value;
+    http = initRequest();
+    http.open("GET", "ItineraryServlet?action=submit&id=" + escape(command), true);
+    http.onreadystatechange = callback;
+    http.send(null);
+}
+
 function callback() {
     if (http.readyState == 4) {
         if (http.status == 200) {
@@ -36,7 +43,7 @@ function parseMessages(responseXML){
         return false;
     } else {
         var tst = responseXML.getElementsByTagName("p")[0];
-        document.getElementById("test").innerHTML = tst.childNodes[0].nodeValue;
+        alert(tst);
         return true;
     }
 }
