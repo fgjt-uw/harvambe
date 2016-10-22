@@ -15,19 +15,13 @@ function initRequest() {
     }
 }
 
-function test(){
-    http = initRequest();
-    http.open("GET", "ItineraryServlet", true);
-    http.onreadystatechange = callback;
-    http.send(null);
-}
-
 function submitCommand(){
-    var command = document.getElementById(comm_input).value;
+    var command = document.getElementById("comm_input").value;
     http = initRequest();
     http.open("GET", "ItineraryServlet?action=submit&id=" + escape(command), true);
     http.onreadystatechange = callback;
     http.send(null);
+    document.getElementById("comm_input").value = "";
 }
 
 function callback() {
@@ -43,7 +37,7 @@ function parseMessages(responseXML){
         return false;
     } else {
         var tst = responseXML.getElementsByTagName("p")[0];
-        alert(tst);
+        alert(tst.childNodes[0].nodeValue);
         return true;
     }
 }

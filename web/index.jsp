@@ -33,9 +33,9 @@
                 async defer>
         </script>
         <div id="map" style="height:90%; width:100%"></div>
-        <form name="command_form" action="submit">
+        <!--<form name="command_form">-->
             <input type="text" id="comm_input">
-            <input type="submit" value="submit">
-        </form>
+            <input type="submit" value="submit" onClick="submitCommand()">
+        <!--</form>-->
     </body>
 </html>

@@ -41,7 +41,7 @@ public class ItineraryServlet extends HttpServlet {
         response.setContentType("text/xml;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try { 
-            if(action.equals("submitCommand")){
+            if(action.equals("submit")){
                 out.println("<p>" + id + " " + (new Itinerary(0, 0)).getJSON() 
                         + " " + (new Test()).getTestString() + "</p>");
             }
