@@ -21,17 +21,18 @@
                 });
             }
         </script>
-        <!-- being stylish -->
+        <script type="text/javascript" src="servercomm.js"></script>
         <style type="text/css"> 
             html, body { height: 100%; margin: 0px; padding: 0px }
             #map_canvas { height: 100%; }
         </style> 
     </head>
-    <body>
+    <body onload="init()">
         <!-- embedded map -->
         <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDwT0mGyNuh1wwVQbi8EZlu5lWvpMXEYjQ&callback=initMap" 
                 async defer>
         </script>
-        <div id="map" style="height:100%; width:100%"></div>
+        <div id="map" style="height:90%; width:100%"></div>
+        <div id="test"></div>
     </body>
 </html>
