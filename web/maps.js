@@ -36,7 +36,7 @@ function addMarker(latlnt){
 function removeMarker(i){
     if(i>0 && i<markers.length){
         markers[i].setMap(null);
-        markers = markers.splice(i, 1);
+        markers.splice(i, 1);
     }
 }
 
