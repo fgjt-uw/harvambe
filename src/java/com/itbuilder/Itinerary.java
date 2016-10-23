@@ -29,10 +29,16 @@ class Itinerary {
         id++;
     }
     
+    void addNode(double latitude, double longitude, String name){
+        addNode(latitude, longitude);
+        current_last.name = name;
+    }
+    
     // implemented for linked_list path
     void removeNode(int id){
         
-        if(id == start_point.id){
+        int x = 0;
+        if(id == x){
             start_point = start_point.next;
             return;
         }
@@ -40,13 +46,14 @@ class Itinerary {
         ItineraryNode i = start_point.next;
         ItineraryNode prev = start_point;
         while(i!=null){
-            if(i.id == id){
+            if(x == id){
                 // found
                 prev.next = i.next;
                 break;
             }
             prev = i;
             i = i.next;
+            x++;
         }
         
     }
@@ -59,6 +66,7 @@ class Itinerary {
                 JSONObject j = new JSONObject();
                 j.put("latitude", it.latitude);
                 j.put("longitude", it.longitude);
+                j.put("name", it.name);
                 s+=j.toString()+" ";
                 it = it.next;
             }

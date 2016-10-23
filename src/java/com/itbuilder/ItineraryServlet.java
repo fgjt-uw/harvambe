@@ -56,14 +56,21 @@ public class ItineraryServlet extends HttpServlet {
                     } else {
                         it.addNode(latitude, longitude);
                     }
+                    if(it != null){
+                        out.println("<p>"+it.getJSONString()+"</p>");
+                    }
                 } else if(actid.equals("remove") && it!=null) {
                     it.removeNode(Integer.parseInt(request.getParameter("id")));
+                    out.println("<p> ... </p>");
                 }
-                if(it == null){
-                    out.println("<p> Nothing :) </p>");
-                } else {
+            } else if(action.equals("refresh")){
+                if(it != null){
                     out.println("<p>"+it.getJSONString()+"</p>");
+                } else {
+                    out.println("<p> ... </p>");
                 }
+            } else {
+                out.println("<p> ... </p>");
             }
         } finally {
             out.close();

@@ -21,22 +21,18 @@
                     zoom: 4,
                     mapTypeId: 'terrain'
                 });
-            }
-            function init(){
-                //document.getElementById('abc').onclick=function(){sendName(map)};
-                initCommander(map);
                 initM(map);
-                document.getElementById('xyz').onclick=
-                        function(){
-                            var str = document.getElementById('comm_input').value;
-                            var arr = str.split(" ");
-                            var str2 = arr[1];
-                            for(var i=2; i<arr.length; i++){
-                                str2+=" "+arr[i];
-                            }
-                            parseCommand(arr[0], str2);
-                            document.getElementById('comm_input').value = "";
-                        }
+                initCommander(map);
+            }
+            function submit() {
+                var str = document.getElementById('comm_input').value;
+                var arr = str.split(" ");
+                var str2 = arr[1];
+                for (var i = 2; i < arr.length; i++) {
+                    str2 += " " + arr[i];
+                }
+                parseCommand(arr[0], str2);
+                document.getElementById('comm_input').value = "";
             }
         </script>
         <style type="text/css"> 
@@ -44,7 +40,7 @@
             #map_canvas { height: 100%; }
         </style> 
     </head>
-    <body onload="init()">
+    <body>
         <!-- embedded map -->
         <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDwT0mGyNuh1wwVQbi8EZlu5lWvpMXEYjQ&callback=initMap&libraries=places" 
                 async defer>
@@ -52,7 +48,7 @@
         <div id="map" style="height:90%; width:100%"></div>
         <!--TESTING-->
         <input type="text" rows="1" id="comm_input">
-        <button id="xyz">Submit</button>
+        <button id="xyz" onclick="submit()">Submit</button>
         <br>
         <!--<input type="text" rows="1" id="name_input">
         <button id="abc">Submit Name</button>-->

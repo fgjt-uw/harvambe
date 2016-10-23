@@ -55,12 +55,14 @@ function addNode(parameter){
 
 function serverCallBack(){
     if (http.readyState == 4) {
-        if (http.status == 200) {
+        if (http.status == 200 && http.responseXML!=null) {
             var tst = http.responseXML.getElementsByTagName("p");
-            if(tst!=null && tst[0] != null){
+            if(tst!=null && tst[0] != null && tst[0].firstChild!=null 
+                    && tst[0].firstChild != "..."){
                tst = tst[0].firstChild.nodeValue;
                //alert(tst);
                var arr = tst.split(" ");
+               alert(arr);
                for(var a in arr){
                    addMarker(JSON.parse(arr[a]));
                }
@@ -74,7 +76,8 @@ function serverCallBack(){
 function removeNode(id){
     http = initRequest();
     http.open("GET", "ItineraryServlet?action=submit&actid=" 
-        + gcommand + "&id=" + id, true);
+        + gcommand, true);
     http.onreadystatechange = serverCallBack;
     http.send(null);
+    removeMarker(id);
 }

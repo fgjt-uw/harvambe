@@ -5,40 +5,39 @@
 */
 
 var infowindow;
-var index = 0;
-//var geocoding = new google.maps.Geocoder();
-//var marker;
+var markers;
 var map;
 
 function initM(m){
     map = m;
+    markers = new Array();
+    http = initRequest();
+    http.open("GET", "ItineraryServlet?action=submit&actid=refresh", true);
+    http.onreadystatechange = serverCallBack;
+    http.send(null);
 }
 
 function addMarker(latlnt){
     var myLatLng = {lat: latlnt.latitude, lng: latlnt.longitude};
     map.setCenter(myLatLng);
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-    /*var loc = {
-        lat: Number(latlnt.latitude),
-        lng: Number(latlnt.longitude)
-    };
-    alert(loc);
-    map.setCenter(loc);
-    marker = new google.maps.Marker({
-        position: loc,
-        title: "NERD",
-        map: map
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: latlnt.name
     });
-    map.checkResize();*/
+    markers.push(marker);
     //infowindow = new google.maps.InfoWindow({
-    //    content: address
+    //    content: latlnt.address
     //});
     //addMarker(address);
     //infowindow.open(map, marker);
+}
+
+function removeMarker(i){
+    if(i>0 && i<markers.length){
+        markers[i].map = null;
+        markers = markers.splice(i, 1);
+    }
 }
 
 function infomaker(address){
