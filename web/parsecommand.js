@@ -26,6 +26,7 @@ function parseCommand(command, parameter){
     } else if(command == "remove") {
         removeNode(parameter);
     }
+    alert("Weird");
 }
 
 function addMapsCallBack(results, status){
