@@ -63,7 +63,7 @@ function serverCallBack(){
                tst = tst[0].firstChild.nodeValue;
                //alert(tst);
                var arr = tst.split(" ");
-               alert(arr);
+               //alert(arr);
                for(var a in arr){
                    if(a != ""){
                        addMarker(JSON.parse(arr[a]));
