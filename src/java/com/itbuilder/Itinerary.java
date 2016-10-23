@@ -59,7 +59,7 @@ class Itinerary {
                 JSONObject j = new JSONObject();
                 j.put("latitude", it.latitude);
                 j.put("longitude", it.longitude);
-                s+=j.toString();
+                s+=j.toString()+" ";
                 it = it.next;
             }
             return s;

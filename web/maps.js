@@ -7,22 +7,38 @@
 var infowindow;
 var index = 0;
 //var geocoding = new google.maps.Geocoder();
-var marker;
+//var marker;
+var map;
 
+function initM(m){
+    map = m;
+}
 
-function addMarker(lastlnt){
-    map.setCenter(latlnt.geometry.location);
+function addMarker(latlnt){
+    var myLatLng = {lat: latlnt.latitude, lng: latlnt.longitude};
+    map.setCenter(myLatLng);
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+    /*var loc = {
+        lat: Number(latlnt.latitude),
+        lng: Number(latlnt.longitude)
+    };
+    alert(loc);
+    map.setCenter(loc);
     marker = new google.maps.Marker({
-        position: latlnt.geometry.location,
-        label: index,
+        position: loc,
+        title: "NERD",
         map: map
     });
-    
-    infowindow = new google.maps.InfoWindow({
-        content: address
-    });
-    addMarker(address);
-    infowindow.open(map, marker);
+    map.checkResize();*/
+    //infowindow = new google.maps.InfoWindow({
+    //    content: address
+    //});
+    //addMarker(address);
+    //infowindow.open(map, marker);
 }
 
 function infomaker(address){

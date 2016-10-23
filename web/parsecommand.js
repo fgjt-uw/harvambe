@@ -57,9 +57,13 @@ function serverCallBack(){
     if (http.readyState == 4) {
         if (http.status == 200) {
             var tst = http.responseXML.getElementsByTagName("p");
-            if(tst!=null){
+            if(tst!=null && tst[0] != null){
                tst = tst[0].firstChild.nodeValue;
-               alert(tst);
+               //alert(tst);
+               var arr = tst.split(" ");
+               for(var a in arr){
+                   addMarker(JSON.parse(arr[a]));
+               }
             } else {
                alert("Your itinerary is now blank.");
             }

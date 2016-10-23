@@ -12,6 +12,7 @@
         <title>Wandaless</title>
         <!-- embedded map customizations -->
         <script type="text/javascript" src="parsecommand.js"></script>
+        <script type="text/javascript" src="maps.js"></script>
         <script>
             var map;
             function initMap() {
@@ -24,6 +25,7 @@
             function init(){
                 //document.getElementById('abc').onclick=function(){sendName(map)};
                 initCommander(map);
+                initM(map);
                 document.getElementById('xyz').onclick=
                         function(){
                             var str = document.getElementById('comm_input').value;
