@@ -41,7 +41,7 @@
                 xmlhttp.send();
             }
         </script>
-		<img src="wandaLogo.png" style="width:200px">
+		<img src="wandaLogo.png" style="width:100px;z-index:900">
         <style type="text/css"> 
             html, body { height: 100%; margin: 0px; padding: 0px }
             #map_canvas { height: 100%; }
