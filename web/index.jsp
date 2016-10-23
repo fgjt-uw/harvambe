@@ -24,15 +24,20 @@
                 initM(map);
                 initCommander(map);
             }
-            function submit() {
-                var str = document.getElementById('comm_input').value;
-                var arr = str.split(" ");
-                var str2 = arr[1];
-                for (var i = 2; i < arr.length; i++) {
-                    str2 += " " + arr[i];
-                }
-                parseCommand(arr[0], str2);
-                document.getElementById('comm_input').value = "";
+            function submitall() {
+                //bot
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "https://api.motion.ai/1.0/getConversations?key=770b5f26f9733897f86e87ef0b7d3713&botID=15046&botType=webchat", true);
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {
+                        if (JSON.parse(xmlhttp.responseText).messages[0].text ==
+                                "Great! Your location was just added to the trip!") {
+                            alert("adding...");
+                            parseCommand("add", xmlhttp.responseText.messages[0].result);
+                        }
+                    }
+                };
+                xmlhttp.send();
             }
         </script>
         <style type="text/css"> 
@@ -45,12 +50,14 @@
         <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDwT0mGyNuh1wwVQbi8EZlu5lWvpMXEYjQ&callback=initMap&libraries=places" 
                 async defer>
         </script>
-        <div id="map" style="height:90%; width:100%"></div>
-        <!--TESTING-->
-        <input type="text" rows="1" id="comm_input">
-        <button id="xyz" onclick="submit()">Submit</button>
-        <br>
-        <!--<input type="text" rows="1" id="name_input">
-        <button id="abc">Submit Name</button>-->
+        <div id="map" style="height:95%; width:100%"></div>
+        <!--<input type="text" rows="1" id="name_input">-->
+        <button id="abc" onclick="submitall()">Refresh</button>
+        <link href="https://api.motion.ai/sdk/webchat.css" rel="stylesheet" type="text/css">
+        <script src="https://api.motion.ai/sdk/webchat.js"></script>
+        <script>
+            motionAI_Init('15046?color=62a8ea&sendBtn=SEND&inputBox=Type+something...&token=b7940a78e2ab89083afb4eb28448a8a7', true, 400, 470); /* botID with access token, display bot icon?, modal width, modal height */
+            /* you may also invoke motionAI_Open(); to manually open the modal */
+        </script>
     </body>
 </html>

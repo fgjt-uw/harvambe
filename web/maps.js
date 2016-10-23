@@ -18,6 +18,7 @@ function initM(m){
 }
 
 function addMarker(latlnt){
+    alert("Pinning!");
     var myLatLng = {lat: latlnt.latitude, lng: latlnt.longitude};
     map.setCenter(myLatLng);
     var marker = new google.maps.Marker({
