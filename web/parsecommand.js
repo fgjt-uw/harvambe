@@ -21,12 +21,12 @@ function initRequest() {
 function parseCommand(command, parameter){
     gcommand = command;
     if(command == "add"){
-        alert(parameter + "is being added");
+        //alert(parameter + "is being added");
         addNode(parameter);
     } else if(command == "remove") {
         removeNode(parameter);
     }
-    alert("Weird");
+    //alert("Weird");
 }
 
 function addMapsCallBack(results, status){
