@@ -30,11 +30,7 @@
                 xmlhttp.open("GET", "https://api.motion.ai/1.0/getConversations?key=770b5f26f9733897f86e87ef0b7d3713&botID=15046&botType=webchat", true);
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {
-                        if (JSON.parse(xmlhttp.responseText).messages[0].text ==
-                                "Great! Your location was just added to the trip!") {
-                            alert("adding...");
-                            parseCommand("add", xmlhttp.responseText.messages[0].result);
-                        }
+                        parseCommand("add", xmlhttp.responseText.messages[0].result);
                     }
                 };
                 xmlhttp.send();
