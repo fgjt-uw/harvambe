@@ -7,16 +7,15 @@ package com.itbuilder;
  */
 class ItineraryNode {
     
-    static int LAST_ID = 0;
     final int id;
     double latitude, longitude;
+    String name;
     ItineraryNode next;
     
-    ItineraryNode(double latitude, double longitude){
+    ItineraryNode(int id, double latitude, double longitude){
         this.latitude = latitude;
         this.longitude = longitude;
-        id = LAST_ID;
-        LAST_ID++;
+        this.id = id;
         next = null;
     }
     

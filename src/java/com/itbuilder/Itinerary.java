@@ -15,35 +15,40 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 class Itinerary {
     
     private ItineraryNode start_point, current_last;
+    private int id = 0;
     
     Itinerary(double start_lat, double start_long){
-        start_point = new ItineraryNode(start_lat, start_long);
+        start_point = new ItineraryNode(id, start_lat, start_long);
         current_last = start_point;
+        id++;
     }
     
     void addNode(double latitude, double longitude){
-        current_last.next = new ItineraryNode(latitude, longitude);
+        current_last.next = new ItineraryNode(id, latitude, longitude);
         current_last = current_last.next;
+        id++;
     }
     
     // implemented for linked_list path
     void removeNode(int id){
-        ItineraryNode i = start_point;
+        
+        if(id == start_point.id){
+            start_point = start_point.next;
+            return;
+        }
+        
+        ItineraryNode i = start_point.next;
         ItineraryNode prev = i;
         while(i!=null){
             if(i.id == id){
                 // found
+                prev.next = i.next;
                 break;
             }
             prev = i;
             i = i.next;
         }
         
-        if(i!=null && prev != i){
-            prev.next = i.next; // toss out found node
-        } else if(prev == start_point && i==null) {
-            start_point = null;
-        }
     }
     
     String getJSONString() {
@@ -54,7 +59,7 @@ class Itinerary {
                 JSONObject j = new JSONObject();
                 j.put("latitude", it.latitude);
                 j.put("longitude", it.longitude);
-                s+=j.toString()+"\n";
+                s+=j.toString();
                 it = it.next;
             }
             return s;

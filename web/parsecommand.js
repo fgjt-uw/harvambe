@@ -1,5 +1,5 @@
 var map;
-var command;
+var gcommand;
 var http;
 
 function initCommander(map_given){
@@ -19,11 +19,10 @@ function initRequest() {
 }
 
 function parseCommand(command, parameter){
+    gcommand = command;
     if(command == "add"){
-        command = "add";
         addNode(parameter);
     } else if(command == "remove") {
-        command = "remove";
         removeNode(parameter);
     }
 }
@@ -32,12 +31,12 @@ function addMapsCallBack(results, status){
     if(status == google.maps.places.PlacesServiceStatus.OK){
         // tell server
         var place = results[0];
-        alert(place);
-        var lat = place["location"]["lat"];
-        var long = place["location"]["long"];
+        var lat = place.geometry.location;
+        var long = lat.lng();
+        var lat = lat.lat();
         http = initRequest();
         http.open("GET", "ItineraryServlet?action=submit&actid=" 
-                + command + "&lat=" + lat + "&long=" + long, true);
+                + gcommand + "&lat=" + lat + "&long=" + long + "&name=" + parameter, true);
         http.onreadystatechange = serverCallBack;
         http.send(null);
     } else {
@@ -60,7 +59,7 @@ function serverCallBack(){
             var tst = http.responseXML.getElementsByTagName("p");
             if(tst!=null){
                tst = tst[0].firstChild.nodeValue;
-               alert("HMM: " + tst);
+               alert(tst);
             } else {
                alert("Your itinerary is now blank.");
             }
@@ -70,8 +69,9 @@ function serverCallBack(){
 
 function removeNode(id){
     http = initRequest();
+    alert(id);
     http.open("GET", "ItineraryServlet?action=submit&actid=" 
-        + command + "&id=" + id, true);
+        + gcommand + "&id=" + id, true);
     http.onreadystatechange = serverCallBack;
     http.send(null);
 }

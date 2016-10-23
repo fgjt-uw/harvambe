@@ -37,7 +37,7 @@ public class ItineraryServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String action = request.getParameter("action");
-        String id = request.getParameter("actid");
+        String actid = request.getParameter("actid");
         
         response.setContentType("text/xml;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -47,7 +47,8 @@ public class ItineraryServlet extends HttpServlet {
             }
             
             if(action.equals("submit")){
-                if(id.equals("add")){
+                System.out.println(actid);
+                if(actid.equals("add")){
                     double latitude = Double.parseDouble(request.getParameter("lat"));
                     double longitude = Double.parseDouble(request.getParameter("long"));
                     if(it == null){
@@ -55,20 +56,14 @@ public class ItineraryServlet extends HttpServlet {
                     } else {
                         it.addNode(latitude, longitude);
                     }
-                } else if(id.equals("remove")) {
-                    if(it == null){
-                        // do nothing
-                    } else {
-                        it.removeNode(Integer.parseInt(request.getParameter("id")));
-                    }
+                } else if(actid.equals("remove") && it!=null) {
+                    it.removeNode(Integer.parseInt(request.getParameter("id")));
                 }
                 if(it == null){
-                    out.println("<p> null </p>");
+                    out.println("<p> Nothing :) </p>");
                 } else {
                     out.println("<p>"+it.getJSONString()+"</p>");
                 }
-            } else {
-                out.println("<p> umm </p>");
             }
         } finally {
             out.close();
