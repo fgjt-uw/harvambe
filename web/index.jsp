@@ -11,8 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Wandaless</title>
         <!-- embedded map customizations -->
-        <script type="text/javascript" src="servercomm.js"></script>
-        <script type="text/javascript" src="nametoaddress.js"></script>
+        <script type="text/javascript" src="parsecommand.js"></script>
         <script>
             var map;
             function initMap() {
@@ -23,8 +22,19 @@
                 });
             }
             function init(){
-                document.getElementById('abc').onclick=function(){sendName(map)};
-                document.getElementById('xyz').onclick=function(){submitCommand()}
+                //document.getElementById('abc').onclick=function(){sendName(map)};
+                initCommander(map);
+                document.getElementById('xyz').onclick=
+                        function(){
+                            var str = document.getElementById('comm_input').value;
+                            var arr = str.split(" ");
+                            var str2 = arr[1];
+                            for(var i=2; i<arr.length; i++){
+                                str2+=" "+arr[i];
+                            }
+                            parseCommand(arr[0], str2);
+                            document.getElementById('comm_input').value = "";
+                        }
             }
         </script>
         <style type="text/css"> 
@@ -40,9 +50,9 @@
         <div id="map" style="height:90%; width:100%"></div>
         <!--TESTING-->
         <input type="text" rows="1" id="comm_input">
-        <button id="xyz">Submit Command</button>
+        <button id="xyz">Submit</button>
         <br>
-        <input type="text" rows="1" id="name_input">
-        <button id="abc">Submit Name</button>
+        <!--<input type="text" rows="1" id="name_input">
+        <button id="abc">Submit Name</button>-->
     </body>
 </html>

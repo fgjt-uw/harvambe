@@ -3,7 +3,6 @@ package com.itbuilder;
 
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
-import java.util.ArrayList;
 
 /**
  *
@@ -16,12 +15,10 @@ import java.util.ArrayList;
 class Itinerary {
     
     private ItineraryNode start_point, current_last;
-    private int num;
     
     Itinerary(double start_lat, double start_long){
         start_point = new ItineraryNode(start_lat, start_long);
         current_last = start_point;
-        num = 1;
     }
     
     void addNode(double latitude, double longitude){
@@ -30,11 +27,11 @@ class Itinerary {
     }
     
     // implemented for linked_list path
-    void removeNode(double latitude, double longitude){
+    void removeNode(int id){
         ItineraryNode i = start_point;
         ItineraryNode prev = i;
         while(i!=null){
-            if(i.latitude == latitude && i.longitude == longitude){
+            if(i.id == id){
                 // found
                 break;
             }
