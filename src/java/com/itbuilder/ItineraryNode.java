@@ -9,7 +9,6 @@ class ItineraryNode {
     
     final int id;
     double latitude, longitude;
-    String name;
     ItineraryNode next;
     
     ItineraryNode(int id, double latitude, double longitude){

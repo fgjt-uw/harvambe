@@ -36,7 +36,7 @@ function addMapsCallBack(results, status){
         var lat = lat.lat();
         http = initRequest();
         http.open("GET", "ItineraryServlet?action=submit&actid=" 
-                + gcommand + "&lat=" + lat + "&long=" + long + "&name=" + parameter, true);
+                + gcommand + "&lat=" + lat + "&long=" + long, true);
         http.onreadystatechange = serverCallBack;
         http.send(null);
     } else {
@@ -69,7 +69,6 @@ function serverCallBack(){
 
 function removeNode(id){
     http = initRequest();
-    alert(id);
     http.open("GET", "ItineraryServlet?action=submit&actid=" 
         + gcommand + "&id=" + id, true);
     http.onreadystatechange = serverCallBack;

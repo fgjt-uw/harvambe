@@ -38,7 +38,7 @@ class Itinerary {
         }
         
         ItineraryNode i = start_point.next;
-        ItineraryNode prev = i;
+        ItineraryNode prev = start_point;
         while(i!=null){
             if(i.id == id){
                 // found
