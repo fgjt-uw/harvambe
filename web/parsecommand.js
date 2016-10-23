@@ -57,14 +57,15 @@ function serverCallBack(){
     if (http.readyState == 4) {
         if (http.status == 200 && http.responseXML!=null) {
             var tst = http.responseXML.getElementsByTagName("p");
-            if(tst!=null && tst[0] != null && tst[0].firstChild!=null 
-                    && tst[0].firstChild != "..."){
+            if(tst!=null && tst[0] != null && tst[0].firstChild!=null){
                tst = tst[0].firstChild.nodeValue;
                //alert(tst);
                var arr = tst.split(" ");
                alert(arr);
                for(var a in arr){
-                   addMarker(JSON.parse(arr[a]));
+                   if(a != ""){
+                       addMarker(JSON.parse(arr[a]));
+                   }
                }
             } else {
                alert("Your itinerary is now blank.");

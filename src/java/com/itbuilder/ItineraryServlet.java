@@ -61,16 +61,16 @@ public class ItineraryServlet extends HttpServlet {
                     }
                 } else if(actid.equals("remove") && it!=null) {
                     it.removeNode(Integer.parseInt(request.getParameter("id")));
-                    out.println("<p> ... </p>");
+                    out.println("<p> </p>");
                 }
             } else if(action.equals("refresh")){
                 if(it != null){
                     out.println("<p>"+it.getJSONString()+"</p>");
                 } else {
-                    out.println("<p> ... </p>");
+                    out.println("<p> </p>");
                 }
             } else {
-                out.println("<p> ... </p>");
+                out.println("<p> </p>");
             }
         } finally {
             out.close();
